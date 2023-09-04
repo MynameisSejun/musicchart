@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.musicchart;
+package com.mycompany.musicchart.model;
 
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
@@ -14,11 +14,11 @@ import org.jsoup.select.Elements;
  *
  * @author 성명주
  */
-public class Genie {
+public class Melon {
     ArrayList<String> listTitle;
     ArrayList<String> listName;
-    public Genie() {
-        String url = "https://www.genie.co.kr/chart/top200";
+    public Melon() {
+        String url = "https://www.melon.com/chart/index.htm";
         Document doc = null;
         
         try {
@@ -30,8 +30,8 @@ public class Genie {
         listTitle = new ArrayList<>();
         listName = new ArrayList<>();
         
-        Elements rank_list = doc.select("td.info a.title.ellipsis");
-        Elements rank_list_name = doc.select("td.info a.artist.ellipsis");
+        Elements rank_list = doc.select("div.wrap_song_info div.ellipsis.rank01 span a");
+        Elements rank_list_name = doc.select("div.wrap_song_info div.ellipsis.rank02 span a");
         
         for(Element a : rank_list) {
             listTitle.add(a.text());
@@ -56,4 +56,5 @@ public class Genie {
     public void setListName(ArrayList<String> listName) {
         this.listName = listName;
     }
+    
 }

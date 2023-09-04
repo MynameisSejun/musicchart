@@ -1,5 +1,7 @@
-package com.mycompany.musicchart;
+package com.mycompany.musicchart.view;
 
+import com.mycompany.musicchart.model.Genie;
+import com.mycompany.musicchart.model.Melon;
 import javax.swing.JTable;
 import javax.swing.table.*;
 
@@ -25,13 +27,13 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        titleTextField = new javax.swing.JTextField();
+        melonBtn = new javax.swing.JButton();
+        genieBtn = new javax.swing.JButton();
         SearchMelon = new javax.swing.JButton();
         SearchGenie = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        singerTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,33 +42,36 @@ public class MainMenu extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "순위", "제목", "가수"
             }
         ));
         jTable1.setToolTipText("");
         jTable1.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         jLabel2.setText("제목");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        titleTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                titleTextFieldActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Melon");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        melonBtn.setText("Melon");
+        melonBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                melonBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Genie");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        genieBtn.setText("Genie");
+        genieBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                genieBtnActionPerformed(evt);
             }
         });
 
@@ -86,9 +91,9 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel1.setText("가수");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        singerTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                singerTextFieldActionPerformed(evt);
             }
         });
 
@@ -102,15 +107,15 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(singerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
+                                .addComponent(melonBtn))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                .addComponent(jButton3)))
+                                .addComponent(genieBtn)))
                         .addGap(47, 47, 47))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -138,10 +143,10 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton1)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(melonBtn)
+                                .addComponent(singerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -149,14 +154,14 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(genieBtn))
                 .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void melonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_melonBtnActionPerformed
         // TODO add your handling code here:
         DefaultTableModel dtm;
         JTable table;
@@ -181,9 +186,9 @@ public class MainMenu extends javax.swing.JFrame {
         table = new JTable(dtm);
         
         jTable1.setModel(dtm);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_melonBtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void genieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genieBtnActionPerformed
         // TODO add your handling code here:
         
         DefaultTableModel dtm;
@@ -208,38 +213,56 @@ public class MainMenu extends javax.swing.JFrame {
         table = new JTable(dtm);
         
         jTable1.setModel(dtm);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_genieBtnActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void titleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleTextFieldActionPerformed
         
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_titleTextFieldActionPerformed
 
     private void SearchMelonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchMelonActionPerformed
-        String str = jTextField2.getText();
+        String str1 = titleTextField.getText();
+        String str2 = singerTextField.getText();
         DefaultTableModel dtm;
         JTable table;
         Object[][] rowData = new Object[50][3];
         int j = 0;
         
-        for(int i=0;i<50;i++){
-            if(rm.getListTitle().get(i).contains(str)){
-               rowData[j][0] = i+1;
-               rowData[j][1] = rm.getListTitle().get(i);
-               rowData[j][2] = rm.getListName().get(i);
-               j++;
-            }   
+        if(str1.isEmpty() == false){
+            if(str2.isEmpty() == false) {
+                for(int i=0;i<rowData.length;i++){
+                    if(rm.getListTitle().get(i).contains(str1)){
+                       rowData[j][0] = i+1;
+                       rowData[j][1] = rm.getListTitle().get(i);
+                       rowData[j][2] = rm.getListName().get(i);
+                       j++;
+                    }   
+                }
+            }
+            else {
+                for(int i=0;i<rowData.length;i++){
+                    if(rm.getListTitle().get(i).contains(str1)){
+                       rowData[j][0] = i+1;
+                       rowData[j][1] = rm.getListTitle().get(i);
+                       rowData[j][2] = rm.getListName().get(i);
+                       j++;
+                    }   
+                }
+            }
+        } 
+        else if(str2.isEmpty()==false){
+            if(str1.isEmpty()) {
+                for(int i=0;i<50;i++){
+                    if(rm.getListName().get(i).contains(str2)){
+                       rowData[j][0] = i+1;
+                       rowData[j][1] = rm.getListTitle().get(i);
+                       rowData[j][2] = rm.getListName().get(i);
+                       j++;
+                    }   
+                }
+            }
         }
         
-        for(int i=0;i<50;i++){
-            if(rm.getListName().get(i).contains(str)){
-               rowData[j][0] = i+1;
-               rowData[j][1] = rm.getListTitle().get(i);
-               rowData[j][2] = rm.getListName().get(i);
-               j++;
-            }   
-        }
-        
-        String[] columTitle = {"Rank","Title","Name"};
+        String[] columTitle = {"순위","제목","가수"};
         dtm = new DefaultTableModel(rowData,columTitle);
         
         table = new JTable(dtm);
@@ -248,8 +271,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchMelonActionPerformed
 
     private void SearchGenieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchGenieActionPerformed
-        String str1 = jTextField2.getText();
-        String str2 = jTextField1.getText();
+        String str1 = titleTextField.getText();
+        String str2 = singerTextField.getText();
         
         DefaultTableModel dtm;
         JTable table;
@@ -260,7 +283,7 @@ public class MainMenu extends javax.swing.JFrame {
         System.out.println("str1  =  " + str1.isEmpty());
         if(str1.isEmpty() == false){
             if(str2.isEmpty() == false) {
-                for(int i=0;i<50;i++){
+                for(int i=0;i<rowData.length;i++){
                     if(rg.getListTitle().get(i).contains(str1)){
                        rowData[j][0] = i+1;
                        rowData[j][1] = rg.getListTitle().get(i);
@@ -270,7 +293,7 @@ public class MainMenu extends javax.swing.JFrame {
                 }
             }
             else {
-                for(int i=0;i<50;i++){
+                for(int i=0;i<rowData.length;i++){
                     if(rg.getListTitle().get(i).contains(str1)){
                        rowData[j][0] = i+1;
                        rowData[j][1] = rg.getListTitle().get(i);
@@ -291,35 +314,10 @@ public class MainMenu extends javax.swing.JFrame {
                     }   
                 }
             }
-//            else {
-//                for(int i=0;i<50;i++){
-//                    if(rg.getListName().get(i).contains(str2)){
-//                       rowData[j][0] = i+1;
-//                       rowData[j][1] = rg.getListTitle().get(i);
-//                       rowData[j][2] = rg.getListName().get(i);
-//                       j++;
-//                    }   
-//                }
-//            }
         }
-            
-            
-       /* if(str1 != null && str2 != null) {
-            rowData[0][0] = "0";
-            rowData[0][1] = "0";
-            rowData[0][2] = "0";
-            for(int i=0;i<50;i++){
-                if(rg.getListTitle().get(i).contains(str1)){
-                   rowData[j][0] = i+1;
-                   rowData[j][1] = rg.getListTitle().get(i);
-                   rowData[j][2] = rg.getListName().get(i);
-                   j++;
-                }   
-            }
-        }*/
        
         
-        String[] columTitle = {"Rank","Title","Name"};
+        String[] columTitle = {"순위","제목","가수"};
         dtm = new DefaultTableModel(rowData,columTitle);
         
         table = new JTable(dtm);
@@ -327,9 +325,9 @@ public class MainMenu extends javax.swing.JFrame {
         jTable1.setModel(dtm);
     }//GEN-LAST:event_SearchGenieActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void singerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singerTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_singerTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,13 +367,13 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SearchGenie;
     private javax.swing.JButton SearchMelon;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton genieBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton melonBtn;
+    private javax.swing.JTextField singerTextField;
+    private javax.swing.JTextField titleTextField;
     // End of variables declaration//GEN-END:variables
 }
